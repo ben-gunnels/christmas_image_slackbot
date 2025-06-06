@@ -26,7 +26,8 @@ def generate_prompt(mode="image-edit", injection=""):
     
     dense_prompt = """
     Recreate the central design of this image.
-    The design must be by itself without any of the background context. 
+    Give the design a strong and bright, festive Christmas theme.  
+    Add elements to ensure that the design is suitable as a Christmas shirt.
     The design should be immediately transferrable as printable for a T-Shirt.
     I want the central design with a transparent background.
     If there is text in the image recreate the text.
@@ -38,6 +39,8 @@ def generate_prompt(mode="image-edit", injection=""):
     if mode == "prompt-only":
         dense_prompt = """
         Add details to this prompt so that it can be used as a prompt for a graphic design. 
+        Give the design a strong and bright, festive Christmas theme. 
+        Add elements to ensure that the design is suitable as a Christmas shirt.
         The design should be immediately transferrable as printable for a T-Shirt.
         I want just the central design described with a transparent background.
         Ensure the design is centered on the canvas with at least 15% transparent margin so nothing is cropped.
