@@ -85,3 +85,23 @@ def send_file(channel_id, filename, message="Hereâ€™s an AI-generated Image! ðŸŽ
             print(f"Upload successful! File ID: {response['file']['id']}")
         except Exception as e:
             print(f"Error uploading file: {e}")
+
+
+def get_bot_user_id(slack_token):
+    """
+    Uses Slack's WebClient to get the bot's user ID.
+
+    Parameters:
+        slack_token (str): Your bot token (starts with xoxb-)
+
+    Returns:
+        str: Bot user ID (e.g. 'U01ABCDEF') or None
+    """
+    client = WebClient(token=slack_token, timeout=180)
+    
+    try:
+        response = client.auth_test()
+        return response["user_id"]
+    except SlackApiError as e:
+        print(f"Slack API Error: {e.response['error']}")
+        return None
