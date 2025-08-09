@@ -346,6 +346,12 @@ class EventHandler:
         if mode == "image-edit":
             generated_image = edit_image(self.logger, generated_prompt, self.input_filename)
 
+        if isinstance(generated_image, dict) and generated_image.get("error"):
+            send_message(self.channel_id, messages.GeneratorError(generated_image["error"]))
+            return
+        else:
+            generated_image = generated_image  # bytes
+            
         if self.verbose: 
             send_message(self.channel_id, messages.ImageGenerated)
         
